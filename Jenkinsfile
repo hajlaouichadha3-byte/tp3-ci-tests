@@ -25,7 +25,7 @@ pipeline {
                 echo 'Tests Python...'
                 bat '''
                     cd python-app
-                    "C:/Users/DELL/AppData/Local/Programs/Python/Python311/python.exe" -m unittest
+                    "C:/Users/DELL/AppData/Local/Programs/Python/Python313/python.exe" -m unittest
                 '''
             }
         }
