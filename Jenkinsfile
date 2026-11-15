@@ -12,7 +12,7 @@ pipeline {
         stage('Test .NET') {
             steps {
                 echo 'Restauration et tests .NET...'
-                sh '''
+                bat '''
                     dotnet restore dotnet-app/ProjectFile.csproj
                     dotnet restore dotnet-app.Tests/ProjectFile-Tests.csproj
                     dotnet test dotnet-app.Tests/ProjectFile-Tests.csproj
@@ -23,11 +23,20 @@ pipeline {
         stage('Test Python') {
             steps {
                 echo 'Tests Python...'
-                sh '''
+                bat '''
                     cd python-app
-                    python3 -m unittest
+                    python -m unittest
                 '''
             }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Tous les tests ont réussi.'
+        }
+        failure {
+            echo '❌ Un ou plusieurs tests ont échoué.'
         }
     }
 }
