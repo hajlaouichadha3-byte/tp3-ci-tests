@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'master'
-            customWorkspace 'C:/JenkinsWorkspace'
-        }
-    }
+    agent any
 
     stages {
         stage('Checkout') {
